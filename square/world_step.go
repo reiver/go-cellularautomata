@@ -3,7 +3,19 @@ package square
 
 type CellGetterFunc func(x, y int) rune
 type CellSetterFunc func(x, y int, r rune)
-type CellStepFunc   func(x, y int, getCurrentCellValue CellGetterFunc, setNextCellValue CellSetterFunc)  
+type CellStepFunc   func(x, y int, getCurrentCellValue CellGetterFunc, setNextCellValue CellSetterFunc)
+
+
+func (me *World) SetCellStepFunc(cellStepFunc CellStepFunc) {
+
+	me.cellStepFunc = cellStepFunc
+}
+func (me *World) CellStepFunc() (CellStepFunc) {
+
+	return me.cellStepFunc
+}
+
+
 
 func (me *World) Step() {
 
